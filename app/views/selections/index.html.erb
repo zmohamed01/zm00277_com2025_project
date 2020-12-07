@@ -1,23 +1,28 @@
-<div id="page">
+<div class="container" id="pages-container">
     <h1 id="selection-title">ALL SELECTIONS</h1>
     <div class="container" id="pages-container">
     <% @selection.each do|selection| %>
       <div class="card text-center">
         <div class="card-header">
-          Zamzam Mohamed
+          <%= selection.user.username %>
         </div>
         <div class="card-body">
           <h5 class="card-title"><%= link_to selection.title, selection_path(selection) %></h5>
           <p class="card-text"><%= selection.reason%></p>
           <%= link_to 'View', selection_path(selection), class:"btn btn-primary" %>
-          <%= link_to 'Change', edit_selection_path(selection), class:"btn btn-success" %>
-          <%= link_to 'Remove', selection_path(selection), class:"btn btn-danger", method: :delete, data: {confirm: "This action is permanent. Do you still want to continue? "}  %>
+          <% if current_user && !current_user.admin %>
+            <%= link_to 'Change', edit_selection_path(selection), class:"btn btn-success" %>
+            <%= link_to 'Remove', selection_path(selection), class:"btn btn-danger", method: :delete, data: {confirm: "This action is permanent. Do you still want to continue? "}  %>
+          <%else %>
+            <%= link_to 'Approve', '#', class:"btn btn-success" %>
+          <%end %>
         </div>
         <div class="card-footer text-muted">
           Last edited at: <%= time_tag(selection.updated_at) %><br/>
           Created at: <%= time_tag(selection.created_at) %>
         </div>
       </div>
+
     <%end %>
     </div>
 </div>

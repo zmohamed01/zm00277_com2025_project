@@ -1,11 +1,16 @@
 class SelectionsController < ApplicationController
   before_action :set_selection, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
 
   def show
   end
 
   def index
-    @selection = Selection.all
+    if (current_user && current_user.admin)
+      @selection = Selection.all
+    else
+       @selection = current_user.selections
+    end
   end
 
   def new
@@ -13,7 +18,8 @@ class SelectionsController < ApplicationController
   end
 
   def create
-    @selection = Selection.new(parameters)
+    @selection = Selection.new(selection_params)
+    @selection.user = current_user
     if @selection.save
       flash[:notice] = "Your selection was successful!"
       redirect_to @selection
@@ -26,7 +32,7 @@ class SelectionsController < ApplicationController
   end
 
   def update
-    if @selection.update(parameters)
+    if @selection.update(selection_params)
       flash[:notice] = "You have successfully updated your module selection!"
       redirect_to @selection
     else
@@ -45,7 +51,8 @@ class SelectionsController < ApplicationController
     @selection = Selection.find(params[:id])
   end
 
-  def parameters
-  params.require(:selection).permit(:title,:reason)
+  def selection_params
+  params.require(:selection).permit(:title,:reason, :user_id)
   end
+
 end
