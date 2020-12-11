@@ -1,4 +1,8 @@
 class Course < ApplicationRecord
+  has_many :selections
+  #has_many :users, through: :selections
+
+  validates :code, :title, :description, presence: true
 
   def self.search(course_code)
 

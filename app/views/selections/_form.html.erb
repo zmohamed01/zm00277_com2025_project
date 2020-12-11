@@ -16,8 +16,12 @@
   <div class="form-group row">
     <%= form.label :title, class:'col-2 col-form-label' %>
     <div class="col-8">
-    <%= form.select(:title, options_for_select([['WEB AND DATABASE SYSTEMS', 'WEB AND DATABASE SYSTEMS'],['FOUNDATIONS OF COMPUTING', 'FOUNDATIONS OF COMPUTING'],['PROGRAMMING FUNDAMENTALS', 'PROGRAMMING FUNDAMENTALS'],['COMPUTER LOGIC', 'COMPUTER LOGIC'],['DATA STRUCTURES AND ALGORITHMS', 'DATA STRUCTURES AND ALGORITHMS'],['OPERATING SYSTEMS', 'OPERATING SYSTEMS'],['FOUNDATIONS OF COMPUTING II', 'FOUNDATIONS OF COMPUTING II'],['SOFTWARE ENGINEERING', 'SOFTWARE ENGINEERING']],:selected => form.object.title), {include_blank:true})%>
-    </div>
+      <% if @selection.new_record? %>
+      <%=form.select(:title, options_for_select([['WEB AND DATABASE SYSTEMS', 'WEB AND DATABASE SYSTEMS'],['FOUNDATIONS OF COMPUTING', 'FOUNDATIONS OF COMPUTING'],['PROGRAMMING FUNDAMENTALS', 'PROGRAMMING FUNDAMENTALS'],['COMPUTER LOGIC', 'COMPUTER LOGIC'],['DATA STRUCTURES AND ALGORITHMS', 'DATA STRUCTURES AND ALGORITHMS'],['OPERATING SYSTEMS', 'OPERATING SYSTEMS'],['FOUNDATIONS OF COMPUTING II', 'FOUNDATIONS OF COMPUTING II'],['SOFTWARE ENGINEERING', 'SOFTWARE ENGINEERING']],:selected => form.object.title), {include_blank:true})%>
+        <%  else %>
+        <%= form.select(:title, options_for_select([['WEB AND DATABASE SYSTEMS', 'WEB AND DATABASE SYSTEMS'],['FOUNDATIONS OF COMPUTING', 'FOUNDATIONS OF COMPUTING'],['PROGRAMMING FUNDAMENTALS', 'PROGRAMMING FUNDAMENTALS'],['COMPUTER LOGIC', 'COMPUTER LOGIC'],['DATA STRUCTURES AND ALGORITHMS', 'DATA STRUCTURES AND ALGORITHMS'],['OPERATING SYSTEMS', 'OPERATING SYSTEMS'],['FOUNDATIONS OF COMPUTING II', 'FOUNDATIONS OF COMPUTING II'],['SOFTWARE ENGINEERING', 'SOFTWARE ENGINEERING']],:selected => form.object.title), {include_blank:true},disabled: Selection.check_db(@selection.title, @selection.user_id))%>
+        <% end %>
+        </div>
   </div>
   <div class="form-group row">
     <%= form.label :reason , class:'col-2 col-form-label'%><br/>
@@ -25,11 +29,10 @@
     <%= form.text_area :reason , rows:5, class:"form-control" %>
   </div>
   </div>
-    <%= form.submit class:"btn btn-success"%>
-  </p>
-<% end %>
 
+      <%= form.submit class:"btn btn-success"%>
 
+  <% end %>
 
 
 </div>
