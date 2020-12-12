@@ -6,7 +6,7 @@ body{
   height: 100%;
 }
 
-#pages-container{
+.pages {
   padding-top: 30px;
   padding-bottom: 20px;
   flex: 1 0 auto;
@@ -38,7 +38,8 @@ opacity: 0.8;
   color: antiquewhite;
 }
 
-#selection-title{
+
+.title1{
   padding-top: 20px;
   text-align: center;
   font-weight: bold;
@@ -53,3 +54,26 @@ opacity: 0.8;
   margin-bottom: 20px;
 
 }
+
+.navbar-nav{
+  padding-right: 10px;
+}
+
+
+.jumbotron {
+  background-image: asset_url('lightbulb_image.png');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+}
+
+.jumbotron .bg-overlay {
+  height: 100%;
+  background: rgba(0,0,0,0.4);
+}
+
+#coursewords{
+  color: antiquewhite;
+}
+

@@ -1,7 +1,6 @@
-<div class="container" id="pages-container">
+<div class="pages container">
   <div class= "row">
     <div class= "col-sm-12">
-
       <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
           <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
@@ -12,8 +11,7 @@
           <div class="carousel-item active">
             <img src="<%= image_url('learn_image.png')%>" class="d-block w-100" alt="slideone">
             <div class="carousel-caption d-none d-md-block">
-              <a href="#" target="_blank"><button type="button" class="btn btn-primary">Log in</button></a>
-              <a href="#" target="_blank"><button type="button" class="btn btn-success">Sign up!</button></a>
+              <%= link_to '<button type="button" class="btn btn-info">Search Modules</button>'.html_safe, courses_path%>
               <h5 > <strong> Module Options Selector 2020 </strong></h5>
               <p>Take your education into your own hands and specially curate your module options to your strengths and future job aspirations!</p>
             </div>

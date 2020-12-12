@@ -1,4 +1,14 @@
-<div class="container" id="pages-container">
-  <h1 id="selection-title">NEW MODULE SELECTION</h1>
+<div class="pages container">
+  <h1 class="title1">NEW MODULE SELECTION</h1>
+  <% if current_user.can_add_selection?(@selection.title, @selection.user_id) %>
   <%= render 'form' %>
+  <% else %>
+    <div class=" alert alert-danger" role="alert">
+      <p> Sorry! You can't choose any new module selections because: <p>
+  <% end %>
+  <% if !current_user.under_credits_limit?%>
+    <p>You have already chosen the maximum of 60 credits!</p>
+  <% end %>
 </div>
+</div>
+
