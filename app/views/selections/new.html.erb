@@ -1,5 +1,5 @@
-<div class="container" id="pages-container">
-  <h1 id="selection-title">NEW MODULE SELECTION</h1>
+<div class="pages container">
+  <h1 class="title1">NEW MODULE SELECTION</h1>
   <% if current_user.can_add_selection?(@selection.title, @selection.user_id) %>
   <%= render 'form' %>
   <% else %>

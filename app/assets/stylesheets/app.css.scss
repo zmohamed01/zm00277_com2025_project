@@ -6,7 +6,7 @@ body{
   height: 100%;
 }
 
-#pages-container{
+.pages {
   padding-top: 30px;
   padding-bottom: 20px;
   flex: 1 0 auto;
@@ -38,7 +38,8 @@ opacity: 0.8;
   color: antiquewhite;
 }
 
-#selection-title{
+
+.title1{
   padding-top: 20px;
   text-align: center;
   font-weight: bold;
