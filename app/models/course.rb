@@ -2,7 +2,10 @@ class Course < ApplicationRecord
   has_many :selections
   #has_many :users, through: :selections
 
-  validates :code, :title, :description, presence: true
+  validates :code, presence: true, uniqueness: true, length: {maximum: 10}
+  validates :title, presence: true
+  validates :description, presence: true, length: {minimum: 50, maximum: 5000}
+
 
   def self.search(course_code)
 

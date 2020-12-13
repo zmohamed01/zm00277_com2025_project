@@ -1,11 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  code: MyString
-  title: MyString
-  description: MyString
+courseOne:
+  code: COM1040
+  title: COMPUTER BUILDING
+  description: A very very very very very very very long sentence indeed
 
-two:
-  code: MyString
-  title: MyString
-  description: MyString
+courseTwo:
+  code: COM1041
+
+
