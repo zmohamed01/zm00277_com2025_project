@@ -11,11 +11,15 @@
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Your Selections
+          Selections
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <% if current_user.admin %>
+            <%= link_to "All student selections", selections_path, class:"dropdown-item" %>
+            <% else %>
           <%= link_to "Make a new module selection", new_selection_path, class:"dropdown-item" %>
-          <%= link_to "All selections", selections_path, class:"dropdown-item" %>
+          <%= link_to "Your selections", selections_path, class:"dropdown-item" %>
+            <% end %>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="#">Something else here</a>
         </div>

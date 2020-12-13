@@ -39,6 +39,11 @@ class SelectionsController < ApplicationController
   end
 
   def update
+    if current_user.admin
+      @selection.update_attribute :approved, params[:approve]
+      flash[:notice] =  "You have successfully approved this module selection!"
+      redirect_to @selection
+    else
       course = Course.find_by_title(@selection.title)
       @selection.course_id = course.id
        if @selection.update(selection_params)
@@ -47,6 +52,7 @@ class SelectionsController < ApplicationController
     else
       render 'edit'
   end
+    end
   end
 
   def destroy

@@ -9,11 +9,20 @@
             <p class="card-text"><%= @selection.reason%></p>
             <% if current_user && !current_user.admin %>
               <%= link_to 'Change', edit_selection_path(@selection), class:"btn btn-success" %>
-              <%= link_to 'Remove', selection_path(@selection), class:"btn btn-danger", method: :delete, data: {confirm: "This action is permanent. Do you still want to continue? "}  %>
+              <%= link_to 'Remove', selection_path(@selection), class:"btn btn-danger", method: :delete, data: {confirm: "This action is permanent. Do you still want to continue? "}  %> </br>
+              <% if @selection.approved %>
+                <span class="badge bg-success">APPROVED!</span>
+              <%else %>
+                <span class="badge bg-warning">APPROVAL PENDING</span>
+              <%end %>
             <%else %>
-              <%= link_to 'Approve', '#', class:"btn btn-success" %>
+              <% if @selection.approved %>
+                <%= link_to 'Unapprove', selection_path(@selection, approve: false), method: :put, class:"btn btn-danger" %>
+              <%else %>
+                <%= link_to 'Approve', selection_path(@selection, approve: true), method: :put, class:"btn btn-success" %>
+              <%end %>
             <%end %>
-            <%= link_to 'Go back', selections_path, class:"btn btn-danger" %>
+
           </div>
           <div class="card-footer text-muted">
             Last edited at: <%= time_tag(@selection.updated_at) %><br/>
@@ -22,6 +31,7 @@
         </div>
     </div>
   <% if !current_user.admin %>
-    <%= link_to 'Make a new Module Selection', new_selection_path, class:"btn btn-secondary" %>
+    <%= link_to 'Make a new Module Selection', new_selection_path, class:"btn btn-primary" %>
   <% end %>
+  <%= link_to 'Go back to All Selections', selections_path, class:"btn btn-secondary" %>
 </div>
