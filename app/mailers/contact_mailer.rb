@@ -6,7 +6,7 @@ class ContactMailer < ApplicationMailer
     @surname = surname
     @message = message
 
-    mail cc: @email
+    mail cc: @email, subject: "Inquery"
   end
 end
 
