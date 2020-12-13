@@ -1,6 +1,6 @@
 <div class="pages container">
   <h1 class="title1">NEW MODULE SELECTION</h1>
-  <% if current_user.can_add_selection?(@selection.title, @selection.user_id) %>
+  <% if current_user.can_add_selection?(@selection.title, @selection.user_id) && !current_user.admin %>
   <%= render 'form' %>
   <% else %>
     <div class=" alert alert-danger" role="alert">
@@ -8,6 +8,8 @@
   <% end %>
   <% if !current_user.under_credits_limit?%>
     <p>You have already chosen the maximum of 60 credits!</p>
+    <% elsif current_user.admin %>
+    <p>You are an admin user!</p>
   <% end %>
 </div>
 </div>
