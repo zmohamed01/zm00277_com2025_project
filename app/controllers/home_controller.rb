@@ -5,6 +5,7 @@ class HomeController < ApplicationController
   def contact
   end
 
+  #Creates a request_contact action so users can deliver their message using the contact form. Only accepts valid and non blank emails.
   def request_contact
 
     email = params[:email]

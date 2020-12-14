@@ -2,6 +2,7 @@ class CoursesController < ApplicationController
   def courses
   end
 
+  #Creates search actions where all users can search using a module code and return the associated course object.
   def search_courses
     if params[:course].present?
       @course = Course.search(params[:course])
