@@ -1,14 +1,14 @@
 <div class="pages container">
-<div class="jumbotron jumbotron-fluid">
-  <div class="bg-overlay">
-  <div id="coursewords" class="container ">
-    <h2 class="display-4" style="text-align:center" ><b> MODULE INFORMATION </b></h2></br>
-    <p class="lead"><b><i> Please search module codes for more detailed information regarding the various different modules currently on offer for the next academic year.
-      Please read all information carefully before <%= link_to "making a module selection", new_selection_path %>
-      and get in <%= link_to "contact", contact_path %>  with any questions.</b></i></p>
+  <div class="jumbotron jumbotron-fluid">
+    <div class="bg-overlay">
+      <div id="coursewords" class="container ">
+        <h2 class="display-4" style="text-align:center" ><b> MODULE INFORMATION </b></h2></br>
+        <p class="lead"><b><i> Please search module codes for more detailed information regarding the various different modules currently on offer for the next academic year.
+        Please read all information carefully before <%= link_to "making a module selection", new_selection_path %>
+        and get in <%= link_to "contact", contact_path %>  with any questions.</b></i></p>
+      </div>
+    </div>
   </div>
-  </div>
-</div>
   <p>
     <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
       Available modules are:
@@ -20,7 +20,8 @@
       <i> <b>  <% (0...8).each { |num| %>
         <%= Course.pluck(:code, :title)[num].join(': ') %> </br> <%  } %>
       </b></i>
-      </br>    </div> <button id="0" class="btn-sm btn-outline-success" onclick="copy(document.getElementById('0').innerHTML)"><%=  Course.pluck(:code)[0].to_s  %></button>
+      </br>
+    </div> <button id="0" class="btn-sm btn-outline-success" onclick="copy(document.getElementById('0').innerHTML)"><%=  Course.pluck(:code)[0].to_s  %></button>
     <button id="1" class="btn-sm btn-outline-success" onclick="copy(document.getElementById('1').innerHTML)"><%=  Course.pluck(:code)[1].to_s  %></button>
     <button id="2" class="btn-sm btn-outline-success" onclick="copy(document.getElementById('2').innerHTML)"><%=  Course.pluck(:code)[2].to_s  %></button>
     <button id="3" class="btn-sm btn-outline-success" onclick="copy(document.getElementById('3').innerHTML)"><%=  Course.pluck(:code)[3].to_s  %></button>
@@ -50,7 +51,7 @@
     <strong> <%=@course.code %> :
     <%=@course.title %></strong>
     <i>Module description: </i><%=@course.description %>
-    </div>
-    <% end %>
+  </div>
+  <% end %>
 
 </div>

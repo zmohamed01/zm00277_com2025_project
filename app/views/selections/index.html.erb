@@ -1,5 +1,5 @@
 <div class="pages container">
-    <h1 class = "title1">ALL SELECTIONS</h1>
+  <h1 class = "title1">ALL SELECTIONS</h1>
   <div class="pages container">
     <% @selection.each do|selection| %>
       <div class="card text-center">
@@ -18,7 +18,7 @@
             <%else %>
               <span class="badge bg-warning">APPROVAL PENDING</span>
             <%end %>
-        <%else %>
+            <%else %>
             <% if selection.approved %>
             <%= link_to 'Unapprove', selection_path(selection, approve: false), method: :put, class:"btn btn-danger" %>
             <%else %>
