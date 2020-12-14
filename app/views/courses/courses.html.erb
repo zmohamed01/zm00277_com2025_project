@@ -17,7 +17,8 @@
   <div class="panel-collapse collapse show" id="collapseExample" >
     <div class="card card-body">
       <p>Press button to copy to clipboard.</p>
-      <i>   <% (0...8).each { |num| %>
+      <i>   <% if !Course.nil? %>
+        <% (0...8).each { |num| %>
           <%= Course.pluck(:code, :title)[num].to_sentence(two_words_connector: '-') %> </br> <%   } %>
       </i>
       </br>    </div> <button id="0" class="btn-sm btn-outline-success" onclick="copy(document.getElementById('0').innerHTML)"><%=  Course.pluck(:code)[0].to_s  %></button>
@@ -29,7 +30,7 @@
     <button id="6" class="btn-sm btn-outline-success" onclick="copy(document.getElementById('6').innerHTML)"><%=  Course.pluck(:code)[6].to_s  %></button>
     <button id="7" class="btn-sm btn-outline-success" onclick="copy(document.getElementById('7').innerHTML)"><%=  Course.pluck(:code)[7].to_s  %></button>
   </div></br>
-
+          <% end %>
 
 
   <h5>Search Module Code: </h5>
