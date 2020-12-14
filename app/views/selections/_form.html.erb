@@ -1,36 +1,35 @@
 
 <div class="pages container">
-
-<% if @selection.errors.any? %>
+  <% if @selection.errors.any? %>
     <div class=" alert alert-danger" role="alert">
-  <p> Sorry! You're input hasn't been accepted because: <p>
-  <ol>
-    <% @selection.errors.full_messages.each do |m| %>
-      <li><%= m %></li>
-    <% end %>
-  </ol>
-  <p> Please enter again!</p></div>
-<% end %>
+      <p> Sorry! You're input hasn't been accepted because: <p>
+      <ol>
+       <% @selection.errors.full_messages.each do |m| %>
+        <li><%= m %></li>
+      <% end %>
+       </ol>
+       <p> Please enter again!</p></div>
+      <% end %>
 
-<%= form_with(model: @selection,local: true) do |form| %>
-  <div class="form-group row">
-    <%= form.label :title, class:'col-2 col-form-label' %>
-    <div class="col-8">
-      <% if @selection.new_record? %>
-      <%=form.select(:title, options_for_select([['WEB AND DATABASE SYSTEMS', 'WEB AND DATABASE SYSTEMS'],['FOUNDATIONS OF COMPUTING', 'FOUNDATIONS OF COMPUTING'],['PROGRAMMING FUNDAMENTALS', 'PROGRAMMING FUNDAMENTALS'],['COMPUTER LOGIC', 'COMPUTER LOGIC'],['DATA STRUCTURES AND ALGORITHMS', 'DATA STRUCTURES AND ALGORITHMS'],['OPERATING SYSTEMS', 'OPERATING SYSTEMS'],['FOUNDATIONS OF COMPUTING II', 'FOUNDATIONS OF COMPUTING II'],['SOFTWARE ENGINEERING', 'SOFTWARE ENGINEERING']],:selected => form.object.title), {include_blank:true})%>
+  <%= form_with(model: @selection,local: true) do |form| %>
+    <div class="form-group row">
+      <%= form.label :title, class:'col-2 col-form-label' %>
+      <div class="col-8">
+        <% if @selection.new_record? %>
+          <%=form.select(:title, options_for_select([['WEB AND DATABASE SYSTEMS', 'WEB AND DATABASE SYSTEMS'],['FOUNDATIONS OF COMPUTING', 'FOUNDATIONS OF COMPUTING'],['PROGRAMMING FUNDAMENTALS', 'PROGRAMMING FUNDAMENTALS'],['COMPUTER LOGIC', 'COMPUTER LOGIC'],['DATA STRUCTURES AND ALGORITHMS', 'DATA STRUCTURES AND ALGORITHMS'],['OPERATING SYSTEMS', 'OPERATING SYSTEMS'],['FOUNDATIONS OF COMPUTING II', 'FOUNDATIONS OF COMPUTING II'],['SOFTWARE ENGINEERING', 'SOFTWARE ENGINEERING']],:selected => form.object.title), {include_blank:true})%>
         <%  else %>
-        <%= form.select(:title, options_for_select([['WEB AND DATABASE SYSTEMS', 'WEB AND DATABASE SYSTEMS'],['FOUNDATIONS OF COMPUTING', 'FOUNDATIONS OF COMPUTING'],['PROGRAMMING FUNDAMENTALS', 'PROGRAMMING FUNDAMENTALS'],['COMPUTER LOGIC', 'COMPUTER LOGIC'],['DATA STRUCTURES AND ALGORITHMS', 'DATA STRUCTURES AND ALGORITHMS'],['OPERATING SYSTEMS', 'OPERATING SYSTEMS'],['FOUNDATIONS OF COMPUTING II', 'FOUNDATIONS OF COMPUTING II'],['SOFTWARE ENGINEERING', 'SOFTWARE ENGINEERING']],:selected => form.object.title), {include_blank:true},disabled: Selection.in_db(@selection.title, @selection.user_id))%>
+          <%= form.select(:title, options_for_select([['WEB AND DATABASE SYSTEMS', 'WEB AND DATABASE SYSTEMS'],['FOUNDATIONS OF COMPUTING', 'FOUNDATIONS OF COMPUTING'],['PROGRAMMING FUNDAMENTALS', 'PROGRAMMING FUNDAMENTALS'],['COMPUTER LOGIC', 'COMPUTER LOGIC'],['DATA STRUCTURES AND ALGORITHMS', 'DATA STRUCTURES AND ALGORITHMS'],['OPERATING SYSTEMS', 'OPERATING SYSTEMS'],['FOUNDATIONS OF COMPUTING II', 'FOUNDATIONS OF COMPUTING II'],['SOFTWARE ENGINEERING', 'SOFTWARE ENGINEERING']],:selected => form.object.title), {include_blank:true},disabled: Selection.in_db(@selection.title, @selection.user_id))%>
         <% end %>
-        </div>
+      </div>
   </div>
   <div class="form-group row">
     <%= form.label :reason , class:'col-2 col-form-label'%><br/>
     <div class="col-8">
     <%= form.text_area :reason , rows:5, class:"form-control" %>
-  </div>
+    </div>
   </div>
 
-      <%= form.submit class:"btn btn-success"%>
+    <%= form.submit class:"btn btn-success"%>
 
   <% end %>
 

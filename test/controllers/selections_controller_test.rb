@@ -12,11 +12,13 @@ class SelectionsControllerTest < ActionDispatch::IntegrationTest
   test "should get index" do
     get selections_url
     assert_response :success
+    assert_select 'h1', 'ALL SELECTIONS'
   end
 
   test "should get new" do
     get new_selection_url
     assert_response :success
+    assert_select 'h1', 'NEW MODULE SELECTION'
   end
 
   test "should create selection" do
@@ -36,6 +38,7 @@ class SelectionsControllerTest < ActionDispatch::IntegrationTest
   test "should get edit" do
     get edit_selection_url(@selection)
     assert_response :success
+    assert_select 'h1', 'CHANGE A MODULE SELECTION'
   end
 
   test "should update selection" do

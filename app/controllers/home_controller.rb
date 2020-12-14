@@ -23,6 +23,7 @@ class HomeController < ApplicationController
   end
     private
 
+  #If email address given is valid, it will match with valid email REGEX.
     def validEmail(input)
       return  input.match(/\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i)
     end

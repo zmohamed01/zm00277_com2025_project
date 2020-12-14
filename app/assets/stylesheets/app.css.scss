@@ -1,5 +1,5 @@
 @import "bootstrap";
-
+/* Shared css */
 html,
 body{
   background-color: whitesmoke;
@@ -26,9 +26,7 @@ body{
   font-weight: bold;
 }
 
-.carousel {
-  width:1160px;
-}
+
 .d-block:hover{
 opacity: 0.8;
 }
@@ -38,7 +36,6 @@ opacity: 0.8;
   color: antiquewhite;
 }
 
-
 .title1{
   padding-top: 20px;
   text-align: center;
@@ -46,34 +43,9 @@ opacity: 0.8;
   font-family: Arial;
 }
 
-.card-header, .card-footer{
-  font-weight: lighter;
-  background-color: ghostwhite;
-}
-.card{
-  margin-bottom: 20px;
-
-}
 
 .navbar-nav{
   padding-right: 10px;
 }
 
-
-.jumbotron {
-  background-image: asset_url('lightbulb_image.png');
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: cover;
-
-}
-
-.jumbotron .bg-overlay {
-  height: 100%;
-  background: rgba(0,0,0,0.4);
-}
-
-#coursewords{
-  color: antiquewhite;
-}
 

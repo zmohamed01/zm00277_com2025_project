@@ -2,9 +2,11 @@ class SelectionsController < ApplicationController
   before_action :set_selection, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
 
+  #Show action: shows individual selections
   def show
   end
 
+  #Index action which shows all selections to admin user but only their own selections for regular users.
   def index
     if (current_user && current_user.admin)
       @selection = Selection.all
@@ -14,10 +16,13 @@ class SelectionsController < ApplicationController
     end
   end
 
+  #New action creates new Selection object
   def new
      @selection = Selection.new
   end
 
+  #Create action saves new selection unless that selection title has already been chosen by that specific user. If selection has
+  # already been chosen, it alerts the user to choose a different module
   def create
     @selection = Selection.new(selection_params)
     @selection.user = current_user
@@ -38,6 +43,7 @@ class SelectionsController < ApplicationController
   def edit
   end
 
+  #Regular users are able to update their selections and admin users are able to approve their choices.
   def update
     if current_user.admin
       @selection.update_attribute :approved, params[:approve]
@@ -55,6 +61,7 @@ class SelectionsController < ApplicationController
     end
   end
 
+  #Users are able to delete Selection choices.
   def destroy
     @selection.destroy
     redirect_to selections_path
@@ -62,10 +69,12 @@ class SelectionsController < ApplicationController
 
   private
 
+  #Callback shares common function multiple actions such as show and edit. So rendered before those actions to limit repetition.
   def set_selection
     @selection = Selection.find(params[:id])
   end
 
+  #Only accepting certain named paramters.
   def selection_params
        params.require(:selection).permit(:title,:reason, :user_id, :course_id)
   end

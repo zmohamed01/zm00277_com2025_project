@@ -1,9 +1,9 @@
 <div class="pages container">
   <div class="pages container">
-        <div class="card text-center">
-          <div class="card-header">
-            <%= @selection.user.username %>
-          </div>
+      <div class="card text-center">
+        <div class="card-header">
+          <%= @selection.user.username %>
+        </div>
           <div class="card-body">
             <h5 class="card-title"><%= @selection.title %></h5>
             <p class="card-text"><%= @selection.reason%></p>
@@ -23,13 +23,13 @@
               <%end %>
             <%end %>
 
-          </div>
+        </div>
           <div class="card-footer text-muted">
             Last edited at: <%= time_tag(@selection.updated_at) %><br/>
             Created at: <%= time_tag(@selection.created_at) %>
           </div>
-        </div>
     </div>
+  </div>
   <% if !current_user.admin %>
     <%= link_to 'Make a new Module Selection', new_selection_path, class:"btn btn-primary" %>
   <% end %>
