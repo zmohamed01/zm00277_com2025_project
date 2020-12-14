@@ -17,9 +17,9 @@
   <div class="panel-collapse collapse show" id="collapseExample" >
     <div class="card card-body">
       <p>Press button to copy to clipboard.</p>
-      <i> <b>  <% (0...8).each { |num| %>
-        <%= Course.split(:code, :title)[num].join(': ') %> </br> <%  } %>
-      </b></i>
+      <i>   <% (0...8).each { |num| %>
+          <%= Course.pluck(:code, :title)[num].to_sentence(two_words_connector: '-') %> </br> <%   } %>
+      </i>
       </br>    </div> <button id="0" class="btn-sm btn-outline-success" onclick="copy(document.getElementById('0').innerHTML)"><%=  Course.pluck(:code)[0].to_s  %></button>
     <button id="1" class="btn-sm btn-outline-success" onclick="copy(document.getElementById('1').innerHTML)"><%=  Course.pluck(:code)[1].to_s  %></button>
     <button id="2" class="btn-sm btn-outline-success" onclick="copy(document.getElementById('2').innerHTML)"><%=  Course.pluck(:code)[2].to_s  %></button>
