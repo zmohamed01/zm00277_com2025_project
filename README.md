@@ -5,6 +5,8 @@ Github: https://github.com/zmohamed01/zm00277_com2025_project
  Ruby version: 2.7.2,
  Rails version: 5.2.4.4
  
+Tested using Google Chrome web browser.
+ 
 Description of site: This site is a Module Selection site where students can login and 
 select the available modules for the next academic year. There is a 'Module Information' 
 page where anyone can search module codes for further information about the module. 
@@ -27,6 +29,7 @@ Student User login details:
                        aisha@student-mail.com
                        phil@student-mail.com
                        betty@student-mail.com
+                       lucy@student-mail.com
         Password(all): password1
 
 
